@@ -190,7 +190,7 @@ set1.add("shiva")
 
 
 
-file_name = open('C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt')
+# file_name = open('C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt')
 
 
 # print(file_name.read())
@@ -216,7 +216,7 @@ file_name = open('C:/Users/shiva/Downloads/python-Revision/python-udemy-course/m
 
 
 # we can perform open and close at same time 
-with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt") as file_name_oc:
+with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/myfile.txt") as file_name_oc:
     # text_file = file_name_oc.read()
     readline_file = file_name_oc.readline()
     readlines_file = file_name_oc.readlines()
@@ -228,26 +228,26 @@ with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.t
 
 
 
-# with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt", mode='r') as file_modes:
+# with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/myfile.txt", mode='r') as file_modes:
 #     mode_r = file_modes.read()
 
 # print("read mode: ",mode_r)
 
 
 
-with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt", mode='r') as file_modes:
+with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/myfile.txt", mode='r') as file_modes:
     print("write mode: ", file_modes.read())
 
-with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt", mode='a') as file_modes:
+with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/myfile.txt", mode='a') as file_modes:
     file_modes.write("i am appending a new line")
 
-with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt", mode='r') as file_modes:
+with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/myfile.txt", mode='r') as file_modes:
     print("write mode: ", file_modes.read())
 
-with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt", mode='w') as file_modes:
+with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/myfile.txt", mode='w') as file_modes:
     file_modes.write("i am new line using write mode")
 
-with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/myfile.txt", mode='r') as file_modes:
+with open("C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/myfile.txt", mode='r') as file_modes:
     print("write mode: ", file_modes.read())
 
 
@@ -887,10 +887,175 @@ print(result)
 
 
 # Game: Finding the ball is in which place
-ball_list = [' ', '0', ' ']
+ball_list = [" ", "0", " "]
+shuffle(ball_list)
+# print(ball_list[0])
 
-guess = ''
-while guess not in ball_list:
-    guess = input("enter your guess (0/1/2): ")
+# user_guess = int(input("enter your guess (0/1/2): "))
+# for value in ball_list:
+#     if ball_list[user_guess] == value and value == '0':
+#         print(f"its a match: {ball_list} ")
+#         break
+#     else:
+#         print(f"not a match: it is here {ball_list}")
+#         continue
 
-print(guess)
+
+
+# user_guess = ' '
+# while user_guess not in ['0','1','2']:
+#     user_guess = input("enter your guess(0/1/2): ")
+
+
+
+
+# lets create functions for above logic
+# def player_guess():
+#     guess = ' '
+#     while guess not in ['0', '1','2']:
+#         guess = input("enter your guess(0/1/2): ")
+#     return int(guess)
+
+# print(player_guess())
+
+
+# def check_guess(player_guess, ball_list):
+#     if ball_list[player_guess] == "0":
+#         print(f"correct: {ball_list}")
+#     else:
+#         print(f"Wrong, it is here: {ball_list}")
+
+# check_guess(player_guess(), ball_list)
+
+
+
+
+# *args and **kwargs
+# arguments and keyword arguments
+def myfunc(num1, num2):
+    """Returns 5% of the sum of num1 and num2"""
+    return sum((num1, num2)) * 5/100
+
+print(myfunc(40, 60))
+
+# but if we add more values to myfunc it will throw error
+# print(myfunc(40,60,10,2,20))
+# we can add give more arguments but what if we dont know how many arguments we need to perform 
+# we use " *args "   it takes unlimited arguments 
+
+def func_args(*args):
+    print(args)     # it returns in tuple format
+
+func_args(1,3,4,4,5,7,8,0)  # we can give many args
+
+
+
+# similarly we have "*kwargs"  we give arguments using keywords
+def func_kwargs(**kwargs):
+    print(kwargs)   # it returns in dictionary format
+
+func_kwargs(name= "shiva")
+
+
+def favorites(**kwargs):
+    if 'fruit' in kwargs:
+        print(f"my fav fruit is : {kwargs['fruit']}")
+    else:
+        print("fruit is not there")
+
+favorites(fruit="apple", veg="dal")
+
+
+
+
+# Combining *args and **kwargs
+def args_kwargs(*args, **kwargs):
+    print(args, kwargs)
+
+args_kwargs(1,2,3,4,name="shiva")
+
+
+
+
+
+# Exercise
+def least_number_of_even_numbers(num1, num2):
+    if num1 %2 == 0 and num2 %2 == 0:
+        if num1 < num2:
+            print(num1)
+        else:
+            print(num2)
+    else:
+        if num1 > num2:
+            print(num1)
+        else:
+            print(num2) 
+
+
+least_number_of_even_numbers(4,3)
+
+
+
+# lets try with return 
+def least_number_even(num1, num2):
+    if num1 %2 == 0 and num2 %2 == 0:
+        # even numbers
+        if num1 < num2:
+            return num1
+        else:
+            return num2
+    else:
+        # odd numbers
+        if num1 < num2:
+            return num2
+        else:
+            return num2
+
+print(least_number_even(1,2))
+
+
+
+# lets use min and max functions 
+def least_number_efficient(num1, num2):
+    if num1 %2 == 0 and num2 %2 == 0:
+        return min(num1, num2)
+    else:
+        return max(num1, num2)
+    
+print(least_number_efficient(10,9))
+
+
+
+
+
+
+#  write a func that takes two strings and if the two words start with same letter then return True if not return False
+def check_first_char(str1, str2):
+    if str1[0] == str2[0]:
+        return True
+    else:
+        return False
+
+print(check_first_char("shiva", "Shambo"))
+# print(check_first_char("shiva", "prasad"))
+
+
+# lets do this in one string having two words
+def check_first_word_char(words):
+    text = words.split()
+    if text[0][0] == text[1][0]:
+        return True
+    else:
+        return False
+print(check_first_word_char("shiva prasad"))
+print(check_first_word_char("shiva shambo"))
+
+
+
+
+# we can do this way also in efficient way
+def check_first_word_char(words):
+    text = words.split()
+    return text[0][0] == text[1][0]
+
+print(check_first_word_char("shiva prasad"))
