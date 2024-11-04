@@ -65,7 +65,7 @@ result = name[:5] + " " + name1 + " " + name[5:]
 # print(result)
 
 
-str = '2' + '4'
+# str = '2' + '4'
 # print(str)
 
 # print(result.capitalize())
@@ -1055,7 +1055,243 @@ print(check_first_word_char("shiva shambo"))
 
 # we can do this way also in efficient way
 def check_first_word_char(words):
-    text = words.split()
+    text = words.lower().split()
     return text[0][0] == text[1][0]
 
-print(check_first_word_char("shiva prasad"))
+print(check_first_word_char("shiva Srasad"))
+
+
+
+
+
+# return True if sum of two integers is equal to 20 or if any one integer is 20 
+# and return False if above does not follow
+def check_twenty(num1, num2):
+    if num1 + num2 == 20 or num1 == 20 or num2 == 20:
+        return True
+    else:
+        return False
+print(check_twenty(12, 80))
+
+
+
+
+
+# Level 1 problems
+# display like this= Ex: old_macdonald('macdonald') --> MacDonald
+def old_macdonald(word):
+    return word[:3].capitalize() + word[3:].capitalize()
+    
+print(old_macdonald('macdonald'))
+
+
+
+
+
+# reverse the words 
+# ex: master_yoda('i am home') --> 'home am i'
+def master_yoda(words):
+    splitted_words = words.split()
+    result = ''
+    for word in splitted_words[::-1]:
+        result = result + word + ' '
+    return result
+print(master_yoda('i am home'))
+
+
+
+
+# we can use .join() also with list
+def master_yoda(words):
+    splitted_words = words.split()
+    reversed_words = splitted_words[::-1]
+    return ' '.join(reversed_words)
+print(master_yoda('i am home'))
+
+
+
+
+# check whether the given number is within 10 
+# when subtracting with either 100 or 200
+# Using abs() function 
+# abs():  used to give us a postive number instead of negative sign
+# ex: abs(100-120) = 20 not -20
+
+def check_number(number):
+    return abs(100 - number) <=10 or abs(200 - number) <= 10
+
+print(check_number(110))
+print(check_number(10))
+print(check_number(200))
+
+
+
+
+
+# Level 2 Problems
+# check whether an array contains 3 and 3 side by side or not 
+# Ex: has_33([1,2,3,3]) = True
+# has_33([1,3,2,3]) = False
+# has_33([3,2,1,3]) = False
+num_list = [1,3,4,5,3,3]
+def has_33(num_list):
+    for num in range(len(num_list)-1):
+        if num_list[num] == 3 and num_list[num + 1] == 3:
+            return "it has 3 & 3"
+    return " it does not have 3 & 3"
+print(has_33(num_list))       
+
+
+
+
+# print every character 3 times instead of single time
+# Ex: paper_doll("Hello")  --->  'HHHeeellllllooo'
+# name = "hello"
+# result = ''
+# for char in name:
+#     result = result + char * 3
+# print(result)
+    
+
+def paper_doll(word):
+    result = ''
+    for char in word:
+        result = result + char * 3
+    return result
+
+print(paper_doll("Hello"))
+print(paper_doll("Mississippi"))
+
+
+
+
+# Blackjack problem
+# if their sum is <= 21 then return their sum
+# if their sum is >21 and there is 11 number in among three numbers then reduce their sum by 10
+# if their sum is >21 and it does not contain any 11 number then return by "BUST"
+def blackjack(numbers):
+    if len(numbers) < 4:
+        total_sum = sum(numbers)
+        # print(total_sum)
+        # to check whether a number is in a list or tuple or string we use "in"
+        if total_sum >21 and 11 in numbers:
+            result = total_sum - 10
+            return result
+        elif total_sum <=21:
+            return total_sum
+        else:
+            return "BUST"
+    else:
+        return "Error: Required 3 numbers, but given 4 numbers"
+
+blackjack_numbers = (5, 6, 7)
+blackjack_numbers = (9, 9, 9)
+blackjack_numbers = (9, 9, 11)
+print(blackjack(blackjack_numbers))
+
+
+
+
+
+# summer_69 
+# return sum() of numbers when it does not have any 6 to 9 numbers
+# if numbers are from 6 to 9 then sum remaining numbers
+# if 6 and 9 are side by side then sum remaining numbers
+# if a list contains 6 and 9 but not side by side then sum all the numbers
+# 6 and 9 cannot be together if yes then sum remaining numbers
+# if list have [1,2,6,7,8,9, 10] then sum remaining numbers 1 + 2 + 10 = 13
+# if list have 6 to 9 not in side by side
+# [1,2,6,3,9,8,4,7] sum all numbers 1+2+6+3+9+8+4+7
+
+# list_num = [1,2,3,4,5,6,9,6,7,8,9]
+# for num in range(len(list_num)-1):
+#     if list_num[num] == 6 and list_num[num+1] == 9:
+#         result = sum(list_num)
+#     print(result)
+
+
+arr = [4, 5, 6, 7, 8 ,9]
+def summer_69(arr_list):
+    total = 0
+    add = True
+    for num in arr_list:
+        while add:
+            if num != 6:
+                total = total + num
+                break
+            else:
+                add = False
+        while add == False:
+            if num != 9:
+                break
+            else:
+                add = True
+                break
+    return total
+
+print(summer_69(arr))
+
+
+
+
+
+# Challenging problems
+# spy problem
+# check whether list contains 007 or not 
+# the numbers to be in order 007 return True
+# if it has 007 but the order is 700 then return False
+# ex: [1,2,4,0,0,7,5] = order = 007 = True
+# [1,0,2,4,0,5,7] = order = 007 = True
+# [1,7,2,0,4,5,0] = order = 700 = False
+spy_list1 = [1,2,4,0,0,7,5]
+spy_list2 = [1,0,2,4,0,5,7]
+spy_list3 = [1,7,2,0,4,5,0]
+def spy_game(spy_game_list):
+    spy_number = ''
+    for num in spy_game_list:
+        if num == 0 or num == 7:
+            spy_number = spy_number + str(num)
+    # print(spy_number)
+    if spy_number == '007':
+        return True
+    else:
+        return False
+print("spy_list1: ",spy_game(spy_list1))
+
+
+
+# Another Method 
+# if we add one more number between that 0 or 7 
+# it does nt give correct answer spy_list1 = [1,2,4,0,0,0,7,5]
+# so we use this method
+spy_list1_new = [1,2,4,0,0,0,7,5]
+def spy_game(nums_list):
+    check_spy = [0, 0, 7, 'x']
+    for num in nums_list:
+        if num == check_spy[0]:
+            check_spy.pop(0)
+    return len(check_spy) == 1
+
+print("spy_list1_new: ",spy_game(spy_list1_new))
+
+
+
+
+
+# Count primes
+def count_primes(number):
+    primes_list = []
+    for num in range(2, number+1):
+        if num < 2:
+            return "please enter number 2 or greater number"
+        else:
+            primes_list.append(num)
+    return primes_list
+print(count_primes(2))
+
+
+
+
+
+
+# Lambda Expressions Map and filter 
