@@ -1295,3 +1295,387 @@ print(count_primes(2))
 
 
 # Lambda Expressions Map and filter 
+def square(number):
+    return number ** 2
+
+# lets take a list of numbers to square them 
+my_num_list = [1,2,3,4,5]
+result = []
+for num in my_num_list:
+    result.append(square(num))
+print(result)
+
+
+
+# but we can do this without using the for loop also 
+# we do this using map() func
+# we convert the map() to a list or tuple or set to see the output
+power_num = map(square,my_num_list)
+# print(list(power_num))  # or
+# print(tuple(power_num))   # or
+print(set(power_num))
+
+
+# we can use in single line
+power_num = list(map(square, my_num_list))
+print(power_num)
+
+
+
+
+
+# display the "even" if the no of characters are even in a word
+# and if character are odd then print the first character of word
+def check_even_word(words):
+    if len(words) %2 == 0:
+        return "EVEN"
+    else:
+        return words[0]
+
+words_list = ["Shiva", "Hari", "Ram"]
+even_words = list(map(check_even_word, words_list))
+print(even_words)
+
+
+# we can use for loop to do this
+result = []
+for word in words_list:
+    result.append(check_even_word(word))
+print(result)
+
+
+
+
+def multiple_2(num):
+    return num * 2
+
+numbers_2 = [1,2,3,4,5,6,7,8]
+
+print(list(map(multiple_2, numbers_2)))
+
+result = []
+for num in numbers_2:
+    result.append(multiple_2(num))
+print(result)
+
+
+
+strings = ["shiva", "prasad", "hari", "raj"]
+
+def even_word(words):
+    if len(words) %2== 0:
+        return "EVEN"
+    else:
+        return words[0].capitalize()
+
+print(list(map(even_word, strings)))
+
+
+
+
+
+
+# filter() func
+# it display the iterables according to the condition that a function have
+# in our case condition is checking even numbers
+def check_even(num):
+    return num %2 == 0
+
+even_list = [1,2,3,4,5,6]
+
+print("filter func even:",list(filter(check_even, even_list)))
+# when we use the same with map func it returns boolean value 
+print("map func even:",list(map(check_even, even_list)))
+
+
+
+def check_odd(num):
+    return num %2 == 1
+
+odd_list = [1,2,3,4,5,6]
+print("filter func odd:",list(filter(check_odd, odd_list)))
+# when we use the same with map func it returns boolean value 
+print("filter func odd:",list(map(check_odd, odd_list)))
+
+
+
+
+
+
+# Lambda Expressions
+# lambda functions are single use functions
+# when a function is used only once we do this using lambda
+# code can be one liners
+# map(), filter(), sorted() are used with lambda
+# lets take square func 
+def square(num):
+    return num ** 2
+
+print(square(3))
+
+
+
+# so previously we used map(), filter() func by creating a seperate def functions 
+# instead we can use lambda to do this 
+# we want to print even_words 
+even_words_list = ["Ram", "Hari", "Dinesh", "Shiva"]
+even_word_result = list(filter(lambda char: len(char) %2 == 0, even_words_list))
+print(even_word_result)
+
+
+# lets see another example: power of 4
+numbers = [1,2,3,4,5,6,7]
+
+result = list(map(lambda num: num ** 4, numbers))
+print(result)
+
+# print only odd number powers in set format
+# to get this o/p we need to use both map and filter functions
+result = set(filter(lambda num: num %2 == 1, numbers))
+
+# now we combine this with map() to implement the logic
+result = list(map(lambda num: num ** 4, filter(lambda num: num %2 == 1, numbers)))
+print("Power 4 of odd numbers: ",result)
+
+
+
+
+# Lets reverse the words using map() and order by asc using sorted()
+list_of_words = ["Ram", "Hari", "Dinesh", "Shiva", "abcde", "prqs"]
+reverse_list = list(sorted(map(lambda char: char[::-1], list_of_words),reverse= True))
+# reversed the characters and ascending order
+print(reverse_list)
+# reversed the characters and descending order
+reverse_list = list(sorted(map(lambda char: char[::-1], list_of_words),reverse= True))
+print(reverse_list)
+
+
+
+
+# lets try this in traditional way
+def reverse_words_sort(words):
+    result_list = []
+    for word in words:
+        result_list.append(word[::-1])
+    return sorted(result_list, reverse=True)
+
+print(reverse_words_sort(list_of_words))
+
+
+# using map with def function
+def reverse_word_with_map(words):
+    return words[::-1]
+
+reverse_map_result = list(map(reverse_word_with_map, list_of_words))
+print("reverse_map_result DEFAULT:",reverse_map_result)
+# sort in asc
+reverse_map_result = list(sorted(map(reverse_word_with_map, list_of_words)))
+print("reverse_map_result ASC ORDER:",reverse_map_result)
+# sort in desc
+reverse_map_result = list(sorted(map(reverse_word_with_map, list_of_words), reverse=True))
+print("reverse_map_result DESC ORDER:",reverse_map_result)
+
+
+
+
+
+
+# Nested Statements and Scopes
+# scope of variables where it can be accessed 
+x = 25
+def printer():
+    x = 50
+    return x
+
+print(x)    # o/p: 25
+
+print(printer())    # o/p: 50
+
+
+# LEGB RULE:
+# LEGB = Local, Enclosing, Global, Built-in
+# Local
+# lambda num: num ** 2
+
+
+
+# GLOBAL SCOPE name
+name = "THIS IS A GLOBAL FUNC"
+def greet():
+    # ENCLOSING SCOPE name
+    name = "I AM ENCLOSING SCOPE"
+    def hello_name():
+        # LOCAL SCOPE
+        print("Hello", name)
+    hello_name()
+greet()     # o/p: hello name
+
+
+# if we comment out the enclosing scope variable then
+# then it takes the global scope variable
+# GLOBAL SCOPE name
+name = "THIS IS A GLOBAL FUNC"
+def greet():
+    # ENCLOSING SCOPE name
+    # name = "I AM ENCLOSING SCOPE"
+    def hello_name():
+        # LOCAL SCOPE
+        print("Hello", name)
+    hello_name()
+greet()     # o/p: hello THIS IS A GLOBAL FUNC
+
+
+
+
+# Lets add local scope variable 
+name = "THIS IS A GLOBAL FUNC"
+def greet():
+    # ENCLOSING SCOPE name
+    name = "I AM ENCLOSING SCOPE"
+    def hello_name():
+        # LOCAL SCOPE
+        name = "I AM LOCAL SCOPE"
+        print("Hello", name)
+    hello_name()
+greet()     # o/p: hello I AM LOCAL SCOPE
+
+
+
+
+
+
+# Methods and Funtions problems
+# write a func to find the volume of sphere by giving the radius 
+def volume_sphere(rad):
+    return 4/3 * 3.14 * rad ** 3
+
+print(volume_sphere(2))
+
+
+
+
+# write a func check a number is in given range or not inclusive high and low
+# Ex: range_check(5, 2, 7)
+# o/p: 5 is in range of 2 and 7
+def range_check(num, low, high):
+    if num in range(low, high+1):
+        return f"{num} is in range between {low} and {high}"
+    else:
+        return f"{num} is NOT in range between {low} and {high}"
+
+# print(range_check(5, 2, 7))
+print(range_check(7, 2, 7))
+
+
+
+# print only the boolean values 
+def range_check_bool(num,low,high):
+    return num in range(low, high)
+
+print(range_check_bool(3,1,10))
+
+
+
+
+
+
+# Find the no.of upper case characters and no.of lower case characters in a string 
+# Expected o/p: No.of Upper Case characters: 4
+# Expected o/p: No.of Lower Case characters: 33
+sample_str = "Hello Mr. Rogers, how are you this is Tuesday?"
+def count_upper_lower(words):
+    upper_char_count = ''
+    lower_char_count = ''   
+    for char in words:
+        if char.isupper():
+            upper_char_count += char
+        elif char.islower():
+            lower_char_count += char 
+        else:
+            pass
+    return f"No.of Upper Case characters: {len(upper_char_count)}\nNo.of Lower Case characters: {len(lower_char_count)}"
+
+print(count_upper_lower(sample_str))
+
+
+
+
+
+
+# write a func that takes a list of numbers and returns a new list with unique elements of first list
+sample_list = [1,1,1,1,2,2,3,3,3,3,4,5]
+def unique_list(list_num):
+    return list(set(list_num))
+
+new_list = unique_list(sample_list)
+print(new_list)
+
+
+
+# lets try this without using set 
+def unique_list(list_num):
+    seen_numbers = []
+    for num in list_num:
+        if num not in seen_numbers:
+            seen_numbers.append(num)
+    return seen_numbers
+
+print(unique_list(sample_list))
+
+
+
+
+# write a func to multiply all the numbers in a list
+sam_list = [1,2,3,-4]
+def multiply(num_list):
+    total = 1
+    for num in num_list:
+        total = total * num 
+    return total
+
+print(multiply(sam_list))
+
+
+
+
+
+# write a func to check palindrome or not 
+# racecar 
+pal_word = "race car"
+pal_word = "nu rs es ru n"
+def palindrome(word):
+    removed_space_word = word.replace(' ','')
+    return removed_space_word[::-1] == removed_space_word
+
+print(f"{pal_word}: ",palindrome(pal_word))
+
+
+
+
+
+
+# check a sentence is pangram or not
+sentence_str = "The quick brown fox jumps over the lazy dog"
+import string
+
+# print(string.ascii_lowercase) = abcdefghijklmnopqrstuvwxyz
+def ispangram(sentence, alphabet = string.ascii_lowercase):
+    # converting it to set 
+    alphabet_set = set(alphabet)
+    # removing spaces from given sentence
+    removed_spaces = sentence.replace(' ', '')
+    # converting it to lowecase
+    lower_case_sentence = removed_spaces.lower()
+    # converting to set
+    lower_case_sentence_set = set(lower_case_sentence)
+    # comparing both sets
+    return alphabet_set == lower_case_sentence_set
+
+
+print(ispangram(sentence_str))
+
+
+
+
+
+
