@@ -1683,3 +1683,130 @@ print(ispangram(sentence_str))
 
 
 
+
+
+
+# OOPS CONCEPTS STARTS HERE
+# Attributes and class keywords
+# class Sample():
+#     pass
+
+# my_sample = Sample()
+# print(my_sample)
+
+
+
+# lets create  attributes in a class
+# whenever the and object is created it also have these attributes
+# class Dog():
+#     """the attributes are breed: string, name: string, color: string"""
+#     def __init__(self, breed, name, color):  # these are parameters
+#         self.breed = breed      # these ara attributes like self.breed is a attribute
+#         self.name = name
+#         self.color = color
+    
+# my_dog = Dog("lab", "tommy", "brown")
+# print(my_dog.breed, my_dog.name, my_dog.color)
+
+
+
+
+
+# lets create methods in a class
+
+place = "hyd"   # we can use this variable without using self inside a class 
+class Dog():
+    """the attributes are breed: string, name: string, color: string"""
+
+    # class attribute: it is also called when an obj is created we are using this outside the __init__ initializer 
+    # since it is outside the __init__ the value will be same for all the obj created with class
+    # so the dog_owner will be same for all the dogs it will be static value for all the obj created
+    # we use self.dog_owner to display the value because it is inside the class so we use self 
+    dog_owner = "shiva"     # class attribute
+
+
+    # Instance Attributes:
+    # these act as a dynamic value every obj will have different values we can assign them 
+    def __init__(self, breed, name, color):  # these are parameters
+        # so basically we add attributes inside this to make it accessible to all the methods inside the class
+        # we use __init__ it is called as a constructor or initializer it is automatically called when obj is created using this class
+        # we use self to make attributes accessible to all the methods inside the class
+        self.breed = breed      # these ara attributes like self.breed is a attribute
+        self.name = name
+        self.color = color
+
+    
+    # we create methods same like we create function with def keyword but 
+    # since we are inside the func so we use parameter self 
+    # and we call this as methods 
+    # def bark(self):
+    #     print("bow bow")
+
+    # we can add parameters also to this method
+    def bark(self, walks):
+        # here we did not used self.walks because this parameter is only accessible to this method only we cannot use this parameter to other methods thats why we donot use self.walks
+        print(f"bow bow, i walked {walks}km.")  # here we are not using the self.walks because we already in used 
+        # we can also use attributes inside the method
+        # so basically we use self for the attributes and for methods if they assigned any parameters then we use it without self
+        print(f"bow bow, i walked {walks}km and my name is {self.name} and my owner is {self.dog_owner}")  # here we are not using the self.walks because we already assigned in method and we used self.name because it is outside the method
+
+        # we can directly use global variable inside the class without self keyword
+        print(f"bow bow, i walked {walks}km and my name is {self.name} and my owner is {self.dog_owner} living in {place}")  # here we are not using the self.walks because we already assigned in method and we used self.name because it is outside the method
+
+    
+my_dog = Dog("lab", "tommy", "brown")
+print(my_dog.breed, my_dog.name, my_dog.color)
+
+my_dog.bark(walks = 2)   # it is a method so we use parenthesis to display the method
+
+
+
+
+# example for class attributes
+# we created two objects with different values 
+my_dog1 = Dog("lab", "tom", "brown")
+my_dog2 = Dog("husky", "jerry", "white")
+
+# lets see the dog owner of these two objects 
+print(my_dog1.dog_owner)
+print(my_dog2.dog_owner)
+
+
+
+
+
+
+
+
+# Lets create another class
+class Circle():
+    # class attribute
+    pi = 3.14
+
+    # adding default value to parameters if they did not enter anything it takes this value by default
+    def __init__(self, radius=1):   # radius=1 means if they did not enter any value it takes as 1 instead of showing error message
+        self.radius = radius
+
+    
+    def get_circumference(self):
+        return self.radius * self.pi * 2
+
+
+my_circle = Circle()
+print(f"pi: {my_circle.pi}")
+print(f"radius: {my_circle.radius}")
+print(f"circumference: {my_circle.get_circumference()}")
+
+
+# lets add radius value instead of taking 1
+my_circle1 = Circle(20)
+print(f"circumference: {my_circle1.get_circumference()}")
+
+
+
+
+ 
+
+
+ # Inheritance
+ 
