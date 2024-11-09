@@ -1809,4 +1809,19 @@ print(f"circumference: {my_circle1.get_circumference()}")
 
 
  # Inheritance
- 
+class Animal():
+    def __init__(self):
+        print("Animal Created")
+
+    def who_am_i(self):
+        print("I am an Animal")
+
+    def eat(self):
+        print("i am eating")
+
+
+class Cat(Animal):
+    def __init__(self):
+        Animal.__init__(self)
+        print("Cat Created")
+
