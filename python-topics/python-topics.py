@@ -1809,6 +1809,12 @@ print(f"circumference: {my_circle1.get_circumference()}")
 
 
  # Inheritance
+ # we are using one class methods and attributes in another class 
+ # or we can use one class in another class as a parameter also that we called inheritance
+ # and next we initialize the used class also in the current class
+ # means we do double initialization one for current class and other is for the inherited class
+ # in our case inherited class = Animal() and the current class = Cat()
+ # so we are using Animal class methods and attributes in cat class
 class Animal():
     def __init__(self):
         print("Animal Created")
@@ -1825,3 +1831,217 @@ class Cat(Animal):
         Animal.__init__(self)
         print("Cat Created")
 
+my_cat = Cat()
+my_cat.who_am_i()
+
+
+
+
+
+# Polymorphism(optional)
+class Lion():
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return self.name + " Roars"
+    
+my_lion = Lion("simba")
+print(my_lion.speak())
+
+
+
+
+
+# Special Methods
+my_list = [1,2,3]
+print(len(my_list))
+
+
+class Sample():
+    pass
+
+my_sample = Sample()
+# print(len(my_sample))
+
+
+
+class Book():
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+my_book = Book("jungle book", "shiva", 300)
+# if we print the my_book it displays the object instead of showing the data
+print(my_book)  
+
+
+# so we use special method called __str__
+# this will print the result in str format
+class Book1():
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+    
+    def __str__(self):
+        return f"Title: {self.title}, author: {self.author}, no of pages: {self.pages}"
+
+
+my_book1 = Book1("jungle book", "shiva", 300)
+# now if we print this it will show the data
+print(my_book1)
+
+
+# lets use some built in function len()
+# but it displays as obj
+# print(len(my_book1))
+
+# so to display the len() of the class we use special method called __len__
+class Book2():
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+    
+    def __str__(self):
+        return f"Title: {self.title}, author: {self.author}, no of pages: {self.pages}"
+
+    def __len__(self):
+        return self.pages
+
+my_book2 = Book2("jungle book", "shiva", 300)
+# now if we print this it will show the data
+print(my_book2)
+# now we try to print the len() of the book
+print(len(my_book2))
+
+
+
+# we can use __del__ special method to delete variable
+class Book2():
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+    
+    def __str__(self):
+        return f"Title: {self.title}, author: {self.author}, no of pages: {self.pages}"
+
+    def __len__(self):
+        return self.pages
+
+    def __del__(self):
+        return "object has been deleted"
+
+my_book2 = Book2("jungle book", "shiva", 300)
+# now if we print this it will show the data
+print(my_book2)
+# lets delete the variable
+del(my_book2)
+
+
+
+
+
+# OOPS Problems
+# find the distance and the slope of line using coordinates 
+# distance formula = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+# slope formula = (y2 - y1)/ (x2 - x1)
+class Line():
+    def __init__(self, coor1, coor2):
+        self.coor1 = coor1  # (x1, y1)
+        self.coor2 = coor2  # (x2, y2)
+    
+    def distance(self):
+        return ((self.coor2[0] - self.coor1[0]) ** 2 + (self.coor2[1] - self.coor1[1]) ** 2) ** 0.5
+
+    def slope(self):
+        return (self.coor2[1] - self.coor1[1])/(self.coor2[0] - self.coor1[0])
+
+coordinate1 = (3, 2)
+coordinate2 = (8, 10)
+
+my_line = Line(coordinate1, coordinate2)
+# lets find the distance of the line
+print(my_line.distance())
+
+# lets find the slope of the line
+print(my_line.slope())
+
+
+
+
+
+# Find volume and surface_area of cylinder
+# pi = 3.14
+# volume of cylinder formula = pi r **2 h
+# surface area = 2pi*r(r+h)
+class Cylinder():
+    def __init__(self, radius=1, height_cyl=1):
+        self.radius = radius
+        self.height_cyl = height_cyl
+    
+    def volume(self):
+        return 3.14 * (self.radius ** 2) * self.height_cyl
+
+    def surface_area(self):
+        return 2 * 3.14 * self.radius * (self.radius + self.height_cyl)
+
+my_cylinder = Cylinder(3, 2)
+# lets find the volume 
+print(my_cylinder.volume())
+# lets find the surface area
+print(my_cylinder.surface_area())
+
+
+
+
+# Challenge problems
+class BankAccount():
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+    
+    def deposit(self, amount):
+        amt_deposit = amount
+        self.balance = self.balance + amount
+        return f"Amt Deposit: {amt_deposit}, Avl Bal: {self.balance}"
+
+    def withdraw(self, amount):
+        amt_withdraw = amount
+        if self.balance < amt_withdraw:
+            return "sorry not enough funds"
+        else:
+            self.balance = self.balance - amount
+            return f"Amt Withdrawn: {amt_withdraw}, Avl Bal: {self.balance}"
+
+    # user = int(input("Deposit or Withdraw?(0/1): "))
+    # if user == 0:
+    #     deposit()
+    # else:
+    #     withdraw()
+
+
+my_acc = BankAccount("shiva", 100)
+print(f"Avl Bal: {my_acc.balance}")
+
+# lets deposit some amount
+# amount_after_deposit = my_acc.deposit(500)
+print(my_acc.deposit(500))
+
+# lets withdraw some amount
+# amount_after_withdraw = my_acc.withdraw(300)
+print(my_acc.withdraw(250))
+
+print(f"Avl Bal: {my_acc.balance}")
+
+# print(my_acc.withdraw(400))
+
+
+
+
+
+# Modules and packages
+# using pipy with pip install
