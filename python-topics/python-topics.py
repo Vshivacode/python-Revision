@@ -2044,4 +2044,27 @@ print(f"Avl Bal: {my_acc.balance}")
 
 
 # Modules and packages
-# using pipy with pip install
+# using pipy with pip install to install any package from internet
+# lets import our newly created file code using import
+from my_module import my_func
+
+my_func()   # this will show the code in my_module file
+
+
+
+# now to create a package and use it 
+# so a folder to be called as a package when it have the __init__.py
+# if a folder is having this file we call it package
+# lets import the main package and sub package that we have created in the python-revision folder
+# from myMainPackage import my_package_script
+
+# my_package_script.my_script()
+
+# from myMainPackage.mySubPackage import my_subpackage_script
+# my_subpackage_script.sub_script()
+
+
+
+
+# __name__ and __main__
+# if __name__ == "__main__":
