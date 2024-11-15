@@ -2068,3 +2068,38 @@ my_func()   # this will show the code in my_module file
 
 # __name__ and __main__
 # if __name__ == "__main__":
+# __name__ is a built in variable like a built in function
+
+
+
+
+
+
+# Errors and Exception Handling 
+# we use three keywords for this 
+# try: 
+def add_fun(n1, n2):
+    return n1 + n2
+
+print(add_fun(2, 3))
+
+number1 = 10
+# number2 = input("enter a number: ")
+# print(add_fun(number1, number2))
+
+
+try:
+    result = 10 + 10
+except:
+    print("please enter numbers")
+
+print("Result from try block: ",result)
+
+
+# lets add some error like add str with int
+try:
+    result = 10 + '10'
+except:
+    print("please enter numbers")
+
+# print("Result from try block: ",result)
