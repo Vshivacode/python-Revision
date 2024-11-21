@@ -2076,7 +2076,26 @@ my_func()   # this will show the code in my_module file
 
 
 # Errors and Exception Handling 
-# we use three keywords for this 
+# these are used mainly for error handling, when we want to proceed execution even an error occurs 
+# example:
+# without try, except
+# add_num = 10 + '10'
+# if add_num == type(int):
+#     print(add_num)
+# else:
+#     print("please assign proper values")
+
+
+# with try, except
+try:
+    add_numbers = 10 + '10'
+    print(add_numbers)
+except:
+    print("please enter correctly i am except block")
+
+
+
+# we use three keywords for this try, except, finally
 # try: 
 def add_fun(n1, n2):
     return n1 + n2
@@ -2103,3 +2122,35 @@ except:
     print("please enter numbers")
 
 # print("Result from try block: ",result)
+
+
+
+# lets do with else
+try:
+    result = 10 + 10
+except:
+    print("Error: please enter numbers")
+else:
+    print("you dont have any errors ")
+
+
+
+
+# lets use finally 
+# this is always show even if there is any error or not
+try:
+    f = open("testfile", 'w')
+    f.write("i am writing a new line using try block")
+except TypeError:
+    print("file not there")
+except:
+    print("i am errors")
+finally:
+    f.close()
+    print("file is closed")
+
+
+
+
+
+# example
