@@ -2154,3 +2154,17 @@ finally:
 
 
 # example
+def ask_for_int():
+    while True:
+        try:
+            result = int(input("enter a number: "))
+        except:
+            print("thats not a number")
+            continue
+        else:
+            print("thank you")
+            break
+        finally:
+            print("i always run")
+
+ask_for_int()
