@@ -2154,17 +2154,70 @@ finally:
 
 
 # example
-def ask_for_int():
+# def ask_for_int():
+#     while True:
+#         try:
+#             result = int(input("enter a number: "))
+#         except:
+#             print("thats not a number")
+#             continue
+#         else:
+#             print("thank you")
+#             break
+#         finally:
+#             print("i always run")
+
+# ask_for_int()
+
+
+
+
+
+
+# problems
+# print('a' * 10)
+c_list = ['a',8,'c']
+# for char in c_list:
+#     print(char ** 2)    # we can multiply but we cannot do the power
+
+# lets handle the exception
+for char in c_list:
+    try:
+        char == int(char)
+        print(char ** 2)
+    except:
+        print("please enter a number list")
+
+
+
+
+
+# problem: divisible by zero
+x = 5
+y = 0
+
+try:
+    z = x/y
+    print(z)
+except ZeroDivisionError:
+    print("denominator cannot be zero")
+finally:
+    print("all done")
+
+
+
+
+
+# problem:  write a func to print square of a number using while loop using try, except finally 
+def square_num():
     while True:
         try:
-            result = int(input("enter a number: "))
+            n = int(input("enter a number: "))
         except:
-            print("thats not a number")
+            print("try again, please enter a number")
             continue
         else:
-            print("thank you")
             break
-        finally:
-            print("i always run")
+    print("square number is:",n ** 2)
 
-ask_for_int()
+square_num()
