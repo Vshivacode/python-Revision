@@ -2221,3 +2221,68 @@ def square_num():
     print("square number is:",n ** 2)
 
 square_num()
+
+
+
+
+
+
+# Unit Testing
+# we have several testing tools but we will focus on two
+# pylint and unittest
+# 1. pylint: it is a library used to check focust reporting possible issues
+# 2. unittest: is a built in library used to test our own code and checking whether we are getting desired outputs
+# so lets install pylint library
+# cmd: pip install pylint
+a = 1
+b = 2
+print(a)
+# print(B)
+# now lets test this file using the cmd: pylint and the filename
+# cmd: pylint test1.py
+
+
+# lets test a func
+def my_func():
+    first = 1
+    second = 2
+    print(first)
+    print(second)
+
+my_func()
+
+
+
+
+# Unit testing
+# we install library using cmd: pip install unittest
+# def cap_let(text):
+#     return text.title()     # capitalize first letter of every word
+
+import unittest
+import cap_letter
+
+
+class TextCap(unittest.TestCase):
+    def test_one_word(self):
+        text = 'python'
+        result = cap_letter.cap_let(text)
+        self.assertEqual(result, 'Python')
+
+    def test_mutltiple_word(self):
+        text = 'hello python'
+        result = cap_letter.cap_let(text)
+        self.assertEqual(result, 'Hello Python')
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
+
+
+
+
+
+# Project - 2
+# card - game 
