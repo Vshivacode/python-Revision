@@ -2209,18 +2209,18 @@ finally:
 
 
 # problem:  write a func to print square of a number using while loop using try, except finally 
-def square_num():
-    while True:
-        try:
-            n = int(input("enter a number: "))
-        except:
-            print("try again, please enter a number")
-            continue
-        else:
-            break
-    print("square number is:",n ** 2)
+# def square_num():
+#     while True:
+#         try:
+#             n = int(input("enter a number: "))
+#         except:
+#             print("try again, please enter a number")
+#             continue
+#         else:
+#             break
+#     print("square number is:",n ** 2)
 
-square_num()
+# square_num()
 
 
 
@@ -2263,19 +2263,19 @@ import unittest
 import cap_letter
 
 
-class TextCap(unittest.TestCase):
-    def test_one_word(self):
-        text = 'python'
-        result = cap_letter.cap_let(text)
-        self.assertEqual(result, 'Python')
+# class TextCap(unittest.TestCase):
+#     def test_one_word(self):
+#         text = 'python'
+#         result = cap_letter.cap_let(text)
+#         self.assertEqual(result, 'Python')
 
-    def test_mutltiple_word(self):
-        text = 'hello python'
-        result = cap_letter.cap_let(text)
-        self.assertEqual(result, 'Hello Python')
+#     def test_mutltiple_word(self):
+#         text = 'hello python'
+#         result = cap_letter.cap_let(text)
+#         self.assertEqual(result, 'Hello Python')
 
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()
 
 
 
@@ -2286,3 +2286,33 @@ if __name__ == '__main__':
 
 # Project - 2
 # card - game 
+# first lets create a card class
+suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+ranks = ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace']
+values = {
+    'Two': 2,
+    'Three': 3,
+    'Four': 4,
+    'Five': 5,
+    'Six': 6,
+    'Seven': 7,
+    'Eight': 8,
+    'Nine': 9,
+    'Ten': 10,
+    'Jack': 11,
+    'Queen': 12,
+    'King': 13,
+    'Ace': 14
+}
+class Card:
+    def __init__(self, suit, rank):
+        self.suit = suit
+        self.rank = rank
+        self.value = values[rank]
+    
+    def __str__(self):
+        return self.rank + " of " + self.suit
+
+two_hearts = Card("hearts", "Two")
+print(two_hearts)
+print(two_hearts.value)
