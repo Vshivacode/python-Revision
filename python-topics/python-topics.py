@@ -2284,35 +2284,141 @@ import cap_letter
 
 
 
-# Project - 2
-# card - game 
-# first lets create a card class
-suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-ranks = ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace']
-values = {
-    'Two': 2,
-    'Three': 3,
-    'Four': 4,
-    'Five': 5,
-    'Six': 6,
-    'Seven': 7,
-    'Eight': 8,
-    'Nine': 9,
-    'Ten': 10,
-    'Jack': 11,
-    'Queen': 12,
-    'King': 13,
-    'Ace': 14
-}
-class Card:
-    def __init__(self, suit, rank):
-        self.suit = suit
-        self.rank = rank
-        self.value = values[rank]
-    
-    def __str__(self):
-        return self.rank + " of " + self.suit
+# Python Decorators
+def hello_func():
+    print("hello")
 
-two_hearts = Card("hearts", "Two")
-print(two_hearts)
-print(two_hearts.value)
+hello_func()
+
+hello_var = hello_func
+print(hello_var)
+
+
+
+def func_1():
+    print("i am func_1")
+
+    def func_2():
+        print("i am func_2")
+
+    func_2()
+
+func_1()
+
+
+print("------------------------------")
+# example
+def hello_name(name = 'shidva'):
+    print("i am hello_name func")
+
+    def greet():
+        print(f"hello {name}")
+
+    def welcome():
+        print("i am welcome func")
+    
+    if name == "shiva":
+        greet()
+    else:
+        welcome()
+
+hello_name()
+
+
+
+
+
+# example 2
+print("---------example-2----------")
+def person(name = 'shiva'):
+    print(f"hello {name}")
+
+def other(fname):
+    print("i am other func")
+    fname()
+other(person)
+
+
+
+
+# using @decorator now
+# example
+# some extra code 
+# i am decorated 
+# some extra code
+
+def new_decorator():
+    print("i am decorated")
+
+def decorator_message(deco_fun):
+    print("some extra code")
+
+    deco_fun()
+
+    print("some extra code")
+
+# decorator_message(new_decorator)
+
+# lets store it in a variable
+decorated_func = decorator_message(new_decorator)
+print(decorated_func)
+
+
+# lets use @decorator_name  we use a func here
+# so basically we use someone else functions in our code using this one single line of code
+# for example we used a func that is created above "decorator_message" using '@' at starting 
+# so simply we used a func in single line 
+@decorator_message
+def new_decorator():
+    print("i am decorated")
+
+
+
+
+
+# Generators 
+def create_cubes(number):
+    result = []
+    for num in range(number):
+        result.append(num ** 3)  # Cube of the current number
+    return result  # Return the list of cubes
+
+# Calling the function
+print(create_cubes(10))
+
+
+
+
+# we can do the same using "yield" keyword  with range() func
+def cube(n):
+    for num in range(n):
+        yield num ** 3
+print(cube(10))     # but this will show an object 
+# so to show the values we need to iterate through
+# it means we convert this into a list, or tuple or set
+print(list(cube(10)))
+
+
+
+
+# example - fibonacci series
+print("---------fibonacci series---------")
+def gen_fibonacci_without_yield(n):
+    a = 1
+    b = 1
+    result = []
+    for num in range(n):
+        result.append(a)    
+        a,b = b, a+b
+    return result
+print(gen_fibonacci_without_yield(10))
+
+
+
+def gen_fibonacci_with_yield(n):
+    a = 1
+    b = 1
+    for num in range(n):
+        yield a
+        a,b = b, a+b
+print(list(gen_fibonacci_with_yield(10)))
