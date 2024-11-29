@@ -2422,3 +2422,35 @@ def gen_fibonacci_with_yield(n):
         yield a
         a,b = b, a+b
 print(list(gen_fibonacci_with_yield(10)))
+
+
+
+
+
+
+
+
+
+# Advanced Python Modules 
+# Collections
+#example - count no of characters occurs
+from collections import Counter
+my_nlist = [1,1,1,1,2,2,2,2,3,4,5,5,6,7,7,7]    
+print(Counter(my_nlist))
+
+char_list = [a,a,a,a,a,a,b,b,b,b,c,c,c,c]
+print(Counter(char_list))
+
+
+str_let = 'aabbbdddccce'
+print(Counter(str_let))
+
+
+# we can count words also
+words = 'how many words are there here in the words list'
+# so we need to split this to a words list
+result = Counter(words.split())
+print(result)
+
+# lets get a paticular key
+print(result['words'])      # o/p: 2
