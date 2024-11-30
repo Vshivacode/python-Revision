@@ -2454,3 +2454,92 @@ print(result)
 
 # lets get a paticular key
 print(result['words'])      # o/p: 2
+
+
+
+
+# Lets use namedtuple
+from collections import namedtuple
+dog_var = namedtuple('Dog', ['age', 'breed', 'name'])
+print(dog_var)
+
+dog_details = dog_var(age=5, breed='husky', name='tom')
+print(dog_details)
+
+print(dog_details.age)
+print(dog_details.breed)
+print(dog_details.name)
+
+
+
+
+
+# shutil and os modules opening and closing files
+# f = open("practice.txt", "w+")
+# f.write("this is a practice test file")
+# f.close()
+
+# with open("practice.txt", "w+") as f:
+#     f.write("this is a practice test file")
+
+
+# lets import os module
+import os
+#lets show our current directory
+print(os.getcwd())      
+
+# lets show a list of directories
+print(os.listdir())
+# lets find for a particular file path, it will show what inside of this directory
+print(os.listdir('C:/Users/shiva'))
+
+
+
+
+
+# lets use shutil
+import shutil
+
+# lets move pactice.txt file to another folder my_files
+# shutil.move('practice.txt', 'C:/Users/shiva/Downloads/python-Revision/python-udemy-course/python-topics/my_files')
+
+
+ 
+
+
+
+# datetime module
+import datetime
+print(datetime.time(2, 20))
+
+print(datetime.date(1999, 10, 2))
+
+# lets find today date
+print(datetime.date.today())
+
+# to get current date
+print(datetime.datetime.now().date())
+
+# to get current time 
+print(datetime.datetime.now().time())
+
+
+# replace is used to replace the date time values
+my_date = datetime.date(1999, 10, 11)
+new_date = my_date.replace(year=2000)
+print(new_date)
+
+
+
+# subract or addition dates
+from datetime import date
+date1 = date(2020, 10, 3)
+date2 = date(2024, 5, 10)
+
+sub = date2 - date1 
+print(sub)  # result in days, how many days left
+
+
+
+
+
