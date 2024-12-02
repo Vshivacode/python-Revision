@@ -2543,3 +2543,6 @@ print(sub)  # result in days, how many days left
 
 
 
+# Math and random module
+import math
+print(math.sqrt(4))
