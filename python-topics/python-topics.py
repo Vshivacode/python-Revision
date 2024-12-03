@@ -2546,3 +2546,34 @@ print(sub)  # result in days, how many days left
 # Math and random module
 import math
 print(math.sqrt(4))
+
+print("-----math.floor------")
+print(math.floor(2.5))
+print(math.floor(2.99))
+print(math.floor(2.1))
+
+print("-----round()------")
+print(round(2.5))
+print(round(2.99))
+print(round(2.6))
+print(round(2.1))
+
+print("-----math.ceil------")
+print(math.ceil(2.5))
+
+
+print(math.pi)
+
+
+print(math.nan)
+
+
+
+
+
+print("-------Random Module------")
+import random
+print(random.randint(1, 100))
+
+
+print(random.seed(1))
