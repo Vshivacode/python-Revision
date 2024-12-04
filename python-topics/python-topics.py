@@ -2576,4 +2576,39 @@ import random
 print(random.randint(1, 100))
 
 
-print(random.seed(1))
+# print(random.seed(1))
+
+
+# prints a list of numbers using range
+rang_list = list(range(1, 20))
+print(rang_list)
+
+
+# takes a number or item every time
+print(random.choice(rang_list))
+
+
+
+# sample with replacement means it prints the same number two or more times randomly with duplicate values
+# it have duplicate values
+print(random.choices(population=rang_list, k = 10))
+
+
+# sample without replacement means it only prints the random values without any duplicate values
+# each value is unique
+print(random.sample(population=rang_list, k=10))
+
+
+
+# shuffle a list
+random.shuffle(rang_list)
+print(rang_list)
+
+
+# uniform picks random value with decimal points
+print(random.uniform(1, 100))
+
+
+# gauss mean and standard deviation
+print(random.gauss(mu=0, sigma=1))
+
